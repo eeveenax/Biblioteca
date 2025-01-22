@@ -1,5 +1,0 @@
-enum Tipo {
-
-    Usuario, Administrador
-
-}
