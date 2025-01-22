@@ -2,13 +2,13 @@ public class GestorUser {
 
     private Usuario[] listaUser;
     private int tam = 500;
-    private int lleno;
+    private static int lleno;
     private static int contadorUs;
 
     public GestorUser() {
 
         this.listaUser = new Usuario[tam];
-        this.lleno = 0;
+        lleno = 0;
 
     }
 
@@ -29,7 +29,7 @@ public class GestorUser {
         if (lleno == 0) {
 
             this.listaUser[lleno] = new Usuario(nombre, ape1, ape2, contra);
-
+            lleno++;
         } else {
 
             for (int i = 0; i < lleno; i++) {

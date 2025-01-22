@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class GestorLibros {
 
     private Libro[] libros;
-    private int lleno;
+    private static int lleno;
     private static final int TAM = 100;
 
     public GestorLibros() {
@@ -13,17 +13,16 @@ public class GestorLibros {
 
     public void agregarLibro(String t, String a, String c) {
 
-        int contador = 0;
-
         if (this.libros[0] == null) {
 
             this.libros[0] = new Libro(t, a, c);
+            lleno++;
 
         } else {
 
             boolean existe = false;
 
-            for (int i = 0; i < contador; i++) {
+            for (int i = 0; i < lleno; i++) {
 
                 if (this.libros[i].getTitulo().equals(t) && this.libros[i].getAutor().equals(a)
                         && this.libros[i].getCategoria().equals(c)) {
@@ -35,12 +34,20 @@ public class GestorLibros {
 
             if (!existe) {
 
-                this.libros[contador] = new Libro(t, a, c);
-                contador++;
+                this.libros[lleno] = new Libro(t, a, c);
+                lleno++;
                 System.out.println("Libro agregado exitosamente");
 
+            } else {
+
+                System.out.println("Ya existe");
             }
         }
+
+    }
+
+    public static void setLleno() {
+        lleno++;
 
     }
 
@@ -94,10 +101,18 @@ public class GestorLibros {
 
     public void librosTotales() {
 
-        for (int i = 0; i < libros.length; i++) {
+        boolean seguir = true;
 
-            String info = libros[i].toString();
-            System.out.println(info);
+        for (int i = 0; i < libros.length && seguir; i++) {
+
+            if (libros[i] != null) {
+
+                String info = libros[i].toString();
+                System.out.println(info);
+
+            } else {
+                seguir = false;
+            }
 
         }
 

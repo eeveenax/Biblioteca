@@ -20,10 +20,20 @@ public class Biblioteca {
 
         // lista de administradores
         Administrador[] listaAdmins = new Administrador[500];
-        listaAdmins[0] = new Administrador("Eve", "Gil", "Paredes", "400");
+        listaAdmins[0] = new Administrador("eve", "gil", "paredes", "400");
         contadorAdmins++;
-        listaAdmins[1] = new Administrador("María", "Mesias", "Ceballos", "500");
+        listaAdmins[1] = new Administrador("maría", "mesias", "ceballos", "500");
         contadorAdmins++;
+
+        // Libros
+
+        gl1.agregarLibro("pdpd", "add", "adf");
+
+        gl1.agregarLibro("dfs", "add", "adf");
+
+        gl1.agregarLibro("ddd", "add", "adf");
+
+        gl1.agregarLibro("pdpd", "add", "adf");
 
         // Biblioteca
         System.out.println(
