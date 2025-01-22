@@ -122,15 +122,19 @@ public class Biblioteca {
 
                     case 5:
 
+                        // buscar todos los libros
+
                         break;
 
                     case 6:
+
+                        // mostrar todos los libros
 
                         break;
 
                     case 7:
 
-                        // Libro[] listalibro = ; lista libros
+                        // Libro[] listalibro = ; lista libros del metodo get de lista de libros
 
                         System.out.println("Introduzca el libro que quieres prestar");
 
@@ -221,6 +225,9 @@ public class Biblioteca {
             System.out.println("No existes (-_-) ");
 
         }
+
+        int prestamosTotales = gp1.getPrestamostotales();
+        System.out.println("Los préstamos totales y activos son de: " + prestamosTotales);
 
         sc.close();
     }

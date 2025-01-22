@@ -3,6 +3,7 @@ public class GestorPrestamos {
     private Libro[] listaLibrosPrestamos;
     private int llenoP;
     private int tam = 100;
+    private int prestamosTotales = 0;
 
     public GestorPrestamos() {
 
@@ -17,7 +18,7 @@ public class GestorPrestamos {
 
         boolean seguir = true;
 
-        for (int i = 0; i < listaLibros.length; i++) {
+        for (int i = 0; i < listaLibros.length && seguir; i++) {
 
             if (titulo.equals(listaLibros[i].getTitulo()) && autor.equals(listaLibros[i].getAutor())
                     && categoria.equals(listaLibros[i].getCategoria())) {
@@ -29,6 +30,7 @@ public class GestorPrestamos {
 
                     listaLibrosPrestamos[llenoP] = new Libro(titulo, autor, categoria, false);
                     llenoP++;
+                    prestamosTotales++;
                     seguir = false;
 
                 }
@@ -52,6 +54,7 @@ public class GestorPrestamos {
 
                     System.out.println("El libro " + listaLibrosPrestamos[i].getTitulo() + " ha sido devuelto");
                     listaLibrosPrestamos[i].setDisponible(true);
+                    prestamosTotales--;
 
                     for (int j = 0; j < llenoP - 1; j++) {
 
@@ -76,6 +79,11 @@ public class GestorPrestamos {
 
         }
 
+    }
+
+    public int getPrestamostotales() {
+
+        return this.prestamosTotales;
     }
 
 }
