@@ -4,9 +4,9 @@ public class Usuario extends Persona {
 
     private int id;
 
-    public Usuario(String nombre, String apellido, String apellido2, String contrasena, Tipo tipo) {
+    public Usuario(String nombre, String apellido, String apellido2, String contrasena) {
 
-        super(nombre, apellido, apellido2, contrasena, tipo);
+        super(nombre, apellido, apellido2, contrasena);
         this.id = getId();
     }
 
