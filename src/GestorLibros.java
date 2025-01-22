@@ -12,7 +12,6 @@ public GestorLibros() {
     lleno = 0;
 
 }
-
-public void nuevoLibro
+  
 
 
