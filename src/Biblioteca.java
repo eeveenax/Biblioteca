@@ -16,6 +16,7 @@ public class Biblioteca {
         // Elementos
         GestorUser g1 = new GestorUser();
         GestorPrestamos gp1 = new GestorPrestamos();
+        GestorLibros gl1 = new GestorLibros();
 
         // lista de administradores
         Administrador[] listaAdmins = new Administrador[500];
@@ -29,13 +30,13 @@ public class Biblioteca {
                 "Bienvenid@ a la Biblioteca, introduzca su usuario: Nombre, Apellido1, Apellido2 y Contraseña .`_´.");
 
         System.out.println("Nombre: ");
-        String n = sc.nextLine();
+        String n = sc.nextLine().toLowerCase();
         System.out.println("Apellido 1: ");
-        String ape1 = sc.nextLine();
+        String ape1 = sc.nextLine().toLowerCase();
         System.out.println("Apellido 2: ");
-        String ape2 = sc.nextLine();
+        String ape2 = sc.nextLine().toLowerCase();
         System.out.println("Contraseña: ");
-        String c = sc.nextLine();
+        String c = sc.nextLine().toLowerCase();
 
         String nombre = " ";
 
@@ -75,6 +76,7 @@ public class Biblioteca {
         if (loggedAdmin && loggeado && encontrado) {
 
             boolean seguirA = true;
+
             while (seguirA) {
                 System.out.println("Bienvenid@ " + nombre + " elija una opción: ");
                 System.out.println("1.Agrega Libros");
@@ -92,9 +94,20 @@ public class Biblioteca {
                 switch (opAdmni) {
                     case 1:
 
+                        System.out.println("Escribe los datos del libro a añadir: ");
+
+                        System.out.println("Título: ");
+                        String t = sc.nextLine().toLowerCase();
+                        System.out.println("Autor: ");
+                        String a = sc.nextLine().toLowerCase();
+                        System.out.println("Categoría: ");
+                        String cat = sc.nextLine().toLowerCase();
+
+                        gl1.agregarLibro(t, a, cat);
+
                         break;
                     case 2:
-
+                        // elimina libros
                         break;
 
                     case 3:
@@ -103,13 +116,13 @@ public class Biblioteca {
 
                         System.out.println("Introduce los datos del uusario a registrar: ");
                         System.out.println("Nombre: ");
-                        String nom = sc.nextLine();
+                        String nom = sc.nextLine().toLowerCase();
                         System.out.println("Apellido 1: ");
-                        String a1 = sc.nextLine();
+                        String a1 = sc.nextLine().toLowerCase();
                         System.out.println("Apellido 2: ");
-                        String a2 = sc.nextLine();
+                        String a2 = sc.nextLine().toLowerCase();
                         System.out.println("Contraseña: ");
-                        String ac = sc.nextLine();
+                        String ac = sc.nextLine().toLowerCase();
 
                         g1.registroUser(nom, a1, a2, ac);
 
@@ -123,19 +136,52 @@ public class Biblioteca {
 
                     case 5:
 
-                        // buscar todos los libros
+                        System.out.println("Elige si quieres buscar por: 1.Titulo, 2.Autor, 3.Categoría");
+                        int o = Integer.parseInt(sc.nextLine());
+
+                        switch (o) {
+                            case 1:
+
+                                System.out.println("Introduce el tíutlo");
+                                String titutloB = sc.nextLine().toLowerCase();
+
+                                gl1.buscartituloLibro(titutloB);
+
+                                break;
+
+                            case 2:
+
+                                System.out.println("Introduce el autor");
+                                String autoB = sc.nextLine().toLowerCase();
+
+                                gl1.buscarPorAutor(autoB);
+
+                                break;
+
+                            case 3:
+                                System.out.println("Introduce la categoría");
+                                String catB = sc.nextLine().toLowerCase();
+
+                                gl1.buscarPorCategoria(catB);
+                                break;
+
+                            default:
+
+                                System.out.println("No hay más opciones");
+                                break;
+                        }
 
                         break;
 
                     case 6:
 
-                        // mostrar todos los libros
+                        gl1.librosTotales();
 
                         break;
 
                     case 7:
 
-                        // Libro[] listalibro = ; lista libros del metodo get de lista de libros
+                        Libro[] listalibro = gl1.getListaLibros();
 
                         System.out.println("Introduzca el libro que quieres prestar");
 
@@ -151,7 +197,7 @@ public class Biblioteca {
 
                         String catp = sc.nextLine();
 
-                        // metodo prestamo
+                        gp1.prestarL(listalibro, titulop, autorp, catp);
 
                         break;
 
@@ -205,11 +251,13 @@ public class Biblioteca {
                         break;
                     case 2:
 
-                        // lista de libros con su metodo toString
+                        gl1.librosTotales();
 
                         break;
 
                     case 3:
+
+                        Libro[] listalibro = gl1.getListaLibros();
 
                         System.out.println("Introduzca el libro que quieres prestar");
 
@@ -225,14 +273,19 @@ public class Biblioteca {
 
                         String catp = sc.nextLine();
 
+                        gp1.prestarL(listalibro, titulop, autorp, catp);
                         // gp1.prestarL(titulop, autorp, catp);
                         // Lista de libros completa
                         Usuario persona = new Usuario(n, ape1, ape2, c);
                         Libro libroprestado = new Libro(titulop, autorp, catp);
                         persona.aumentoCUP();
+                        libroprestado.aumentoContadorLP();
+
                         // libroprestado.aumentoCLP();
-                        System.out.println("Préstamo realizado con éxito. Préstamos realizados por este usuario: "
-                                + persona.getContadorUP());
+                        System.out.println("Préstamo realizado con éxito. Préstamos realizados por: "
+                                + persona.getNombre() + ". Este usuario ha realzia un total de: "
+                                + persona.getContadorUP() + " préstamos." + " El libro que ha sido prestado es el: "
+                                + libroprestado.getTitulo());
 
                         break;
 

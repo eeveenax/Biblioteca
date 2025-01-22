@@ -4,6 +4,7 @@ public class Libro {
     private String autor;
     private String categoria;
     private boolean disponible;
+    private int contadoLP = 0;
 
     public Libro(String titulo, String autor, String categoria, boolean disponible) {
         this.titulo = titulo;
@@ -16,6 +17,19 @@ public class Libro {
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
+
+    }
+
+    public void aumentoContadorLP() {
+
+        this.contadoLP = contadoLP++;
+
+    }
+
+    public int getContadorLP() {
+
+        return contadoLP;
+
     }
 
     public void setTitulo(String titulo) {
