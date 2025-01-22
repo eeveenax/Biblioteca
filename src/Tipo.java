@@ -1,0 +1,5 @@
+enum Tipo {
+
+    Usuario, Administrador
+
+}

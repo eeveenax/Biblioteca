@@ -4,12 +4,14 @@ public class Persona {
     String apellido;
     String apellido2;
     String contrasena;
+    Tipo tipo;
 
-    public Persona(String nombre, String apellido, String apellido2, String contrasena) {
+    public Persona(String nombre, String apellido, String apellido2, String contrasena, Tipo tipo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.contrasena = contrasena;
         this.apellido2 = apellido2;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
