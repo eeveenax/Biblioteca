@@ -3,6 +3,8 @@ import java.util.Arrays;
 public class GestorLibros {
 
     private Libro[] libros;
+    private Libro[] librosporPrestamo;
+
     private static int lleno;
     private static final int TAM = 100;
 
@@ -15,7 +17,7 @@ public class GestorLibros {
 
         if (this.libros[0] == null) {
 
-            this.libros[0] = new Libro(t, a, c);
+            this.libros[0] = new Libro(t, a, c, true);
             lleno++;
 
         } else {
@@ -34,7 +36,7 @@ public class GestorLibros {
 
             if (!existe) {
 
-                this.libros[lleno] = new Libro(t, a, c);
+                this.libros[lleno] = new Libro(t, a, c, true);
                 lleno++;
                 System.out.println("Libro agregado exitosamente");
 
@@ -115,6 +117,43 @@ public class GestorLibros {
             }
 
         }
+
+    }
+
+    public Libro[] librosMasPrestados() {
+
+        librosporPrestamo = libros.clone();
+
+        boolean seguirC = true;
+
+        while (seguirC) {
+
+            int cambios = 0;
+
+            for (int i = 0; i < librosporPrestamo.length - 1; i++) {
+
+                Libro aux = new Libro();
+
+                if (librosporPrestamo[i].getContadorLP() < librosporPrestamo[i].getContadorLP()) {
+
+                    aux = librosporPrestamo[i];
+                    librosporPrestamo[i] = librosporPrestamo[i + 1];
+                    librosporPrestamo[i + 1] = aux;
+                    cambios++;
+
+                }
+
+            }
+
+            if (cambios == 0) {
+
+                seguirC = false;
+
+            }
+
+        }
+
+        return librosporPrestamo;
 
     }
 

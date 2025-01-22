@@ -11,13 +11,15 @@ public class Libro {
         this.autor = autor;
         this.categoria = categoria;
         this.disponible = disponible;
+        this.contadoLP = getContadorLP();
     }
 
-    public Libro(String titulo, String autor, String categoria) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.categoria = categoria;
-
+    public Libro() {
+        this.titulo = " ";
+        this.autor = " ";
+        this.categoria = " ";
+        this.disponible = true;
+        this.contadoLP = 0;
     }
 
     public void aumentoContadorLP() {

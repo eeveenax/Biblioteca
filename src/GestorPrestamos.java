@@ -8,6 +8,7 @@ public class GestorPrestamos {
     public GestorPrestamos() {
 
         this.listaLibrosPrestamos = new Libro[tam];
+
         llenoP = 0;
 
     }

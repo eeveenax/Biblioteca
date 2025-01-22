@@ -287,7 +287,7 @@ public class Biblioteca {
                         // gp1.prestarL(titulop, autorp, catp);
                         // Lista de libros completa
                         Usuario persona = new Usuario(n, ape1, ape2, c);
-                        Libro libroprestado = new Libro(titulop, autorp, catp);
+                        Libro libroprestado = new Libro(titulop, autorp, catp, true);
                         persona.aumentoCUP();
                         libroprestado.aumentoContadorLP();
 
@@ -334,6 +334,13 @@ public class Biblioteca {
 
         int prestamosTotales = gp1.getPrestamostotales();
         System.out.println("Los préstamos totales y activos son de: " + prestamosTotales);
+
+        Libro[] listaMP = gl1.librosMasPrestados();
+        for (Libro l : listaMP) {
+
+            System.out.println(l.toString());
+
+        }
 
         sc.close();
     }
