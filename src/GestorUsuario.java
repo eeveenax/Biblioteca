@@ -2,13 +2,7 @@ public class GestorUsuario {
 
     private Usuario[] listaUsuario;
     private int contadorUsuario;
-    private int tamUser= 500;
- 
-
-
-    
-     
-       
+    private int tamUser = 500;
 
     
 }
