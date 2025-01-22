@@ -64,6 +64,7 @@ public class Biblioteca {
 
                 System.out.println("¡Te has loggeado con éxito!");
                 nombre = listaUsuario[i].getNombre();
+
                 loggeado = true;
                 encontrado = true;
 
@@ -150,6 +151,8 @@ public class Biblioteca {
 
                         String catp = sc.nextLine();
 
+                        // metodo prestamo
+
                         break;
 
                     case 8:
@@ -202,13 +205,53 @@ public class Biblioteca {
                         break;
                     case 2:
 
+                        // lista de libros con su metodo toString
+
                         break;
 
                     case 3:
 
+                        System.out.println("Introduzca el libro que quieres prestar");
+
+                        System.out.println("Título: ");
+
+                        String titulop = sc.nextLine();
+
+                        System.out.println("Autor: ");
+
+                        String autorp = sc.nextLine();
+
+                        System.out.println("Categoría: ");
+
+                        String catp = sc.nextLine();
+
+                        // gp1.prestarL(titulop, autorp, catp);
+                        // Lista de libros completa
+                        Usuario persona = new Usuario(n, ape1, ape2, c);
+                        Libro libroprestado = new Libro(titulop, autorp, catp);
+                        persona.aumentoCUP();
+                        // libroprestado.aumentoCLP();
+                        System.out.println("Préstamo realizado con éxito. Préstamos realizados por este usuario: "
+                                + persona.getContadorUP());
+
                         break;
 
                     case 4:
+
+                        System.out.println("Introduzca el libro a devolver");
+                        System.out.println("Título: ");
+
+                        String titulod = sc.nextLine();
+
+                        System.out.println("Autor: ");
+
+                        String autord = sc.nextLine();
+
+                        System.out.println("Categoría: ");
+
+                        String catd = sc.nextLine();
+
+                        gp1.devolverL(titulod, autord, catd);
 
                         break;
 

@@ -12,6 +12,13 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
+    public Persona() {
+        this.nombre = " ";
+        this.apellido = " ";
+        this.contrasena = " ";
+        this.apellido2 = " ";
+    }
+
     public String getNombre() {
         return this.nombre;
     }
