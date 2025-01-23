@@ -111,13 +111,6 @@ public class Usuario {
 
     }
 
-    @Override
-    public String toString() {
-
-        return "Nombre: " + this.nombre + ". Apellido 1: " + this.apellido + ". Apellido 2: " + this.apellido2
-                + ". Contraseña: " + this.contrasena;
-    }
-
     public void aumentaLibrosUsuarioPrestados(Libro libro) {
 
         if (this.contLibrosPrestamoActivos < this.listaLibrosUsuariosTienePrestado.length) {
@@ -172,4 +165,10 @@ public class Usuario {
 
     }
 
+    @Override
+    public String toString() {
+
+        return "Nombre: " + this.nombre + ". Apellido 1: " + this.apellido + ". Apellido 2: " + this.apellido2
+                + ". Contraseña: " + this.contrasena;
+    }
 }

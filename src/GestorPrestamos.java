@@ -4,7 +4,6 @@ public class GestorPrestamos {
     private int contadorLibrosPrestados;
     private int tam = 100;
     private int prestamosTotales = 0;
-    private int prestamosActivos = 0;
 
     public GestorPrestamos() {
 
@@ -20,41 +19,54 @@ public class GestorPrestamos {
 
     }
 
-    public void prestarL(Libro libro) {
+    public void prestarL(Libro[] listaLibro, String titulo, String autor, String categoria, Usuario usuario,
+            int contadorLibro) {
 
-        if (libro.getDisponible() == true) {
+        boolean seguir = true;
 
-            System.out.println(
-                    "El libro " + libro.getTitulo() + " está disponible para su préstamos");
+        for (int i = 0; i < contadorLibro && seguir; i++) {
 
-            libro.setDisponible(false);
+            if (listaLibro[i].getTitulo().equals(titulo) && listaLibro[i].getAutor().equals(autor)
+                    && listaLibro[i].getCategoria().equals(categoria)) {
 
-            listaLibrosPrestamos[contadorLibrosPrestados] = libro;
-            contadorLibrosPrestados++;
-            prestamosTotales++;
-            prestamosActivos++;
+                if (listaLibro[i].getDisponible() == true) {
+
+                    System.out.println(
+                            "El libro " + listaLibro[i].getTitulo() + " está disponible para su préstamos");
+
+                    listaLibro[i].setDisponible(false);
+
+                    this.listaLibrosPrestamos[contadorLibrosPrestados] = listaLibro[i];
+                    prestamosTotales++;
+                    contadorLibrosPrestados++;
+
+                }
+
+            }
 
         }
 
     }
 
-    // recibe la lista de libros prestados
-
-    public void devolverL(Libro libro) {
+    public void devolverL(String titulo, String autor, String categoria, Usuario usuario) {
 
         if (contadorLibrosPrestados > 0) {
 
-        }
+            boolean seguirD = true;
 
-        for (int i = 0; i < contadorLibrosPrestados; i++) {
+            for (int i = 0; i < contadorLibrosPrestados && seguirD; i++) {
 
-            if (listaLibrosPrestamos[i] == libro) {
-
-                if (listaLibrosPrestamos[i].getDisponible() == false) {
+                if (this.listaLibrosPrestamos[i].getTitulo().equals(titulo)
+                        && this.listaLibrosPrestamos[i].getAutor().equals(autor)
+                        && this.listaLibrosPrestamos[i].getCategoria().equals(categoria)) {
 
                     System.out.println("El libro " + listaLibrosPrestamos[i].getTitulo() + " ha sido devuelto");
                     listaLibrosPrestamos[i].setDisponible(true);
-                    prestamosActivos--;
+                    contadorLibrosPrestados--;
+
+                    // eliminar libro lista usuario
+
+                    usuario.restaLibrosUsuarioPrestados(listaLibrosPrestamos[i]);
 
                     for (int j = i; j < contadorLibrosPrestados - 1; j++) {
 
@@ -62,7 +74,7 @@ public class GestorPrestamos {
 
                     }
 
-                    contadorLibrosPrestados--;
+                    seguirD = false;
 
                 }
 
@@ -89,7 +101,7 @@ public class GestorPrestamos {
 
     public int getPrestamosActivos() {
 
-        return this.prestamosActivos;
+        return this.contadorLibrosPrestados;
     }
 
 }

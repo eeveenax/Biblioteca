@@ -12,6 +12,22 @@ public class GestorLibros {
         contadorLibros = 0;
     }
 
+    public void setLibros(Libro[] libros) {
+        this.libros = libros;
+    }
+
+    public Libro[] getListaLibros() {
+
+        return this.libros;
+
+    }
+
+    public int getContadorLibros() {
+
+        return contadorLibros;
+
+    }
+
     public void agregarLibro(String titulo, String autor, String categoria) {
 
         if (contadorLibros == 0) {
@@ -48,12 +64,6 @@ public class GestorLibros {
             }
 
         }
-
-    }
-
-    public Libro[] getListaLibros() {
-
-        return this.libros;
 
     }
 

@@ -269,6 +269,7 @@ public class Biblioteca {
                     case 7:
 
                         Libro[] listaLibros = gestorLibro1.getListaLibros();
+                        int contadorLibro = gestorLibro1.getContadorLibros();
 
                         System.out.println("Introduzca el libro que quieres prestar");
                         System.out.println("Título");
@@ -278,21 +279,7 @@ public class Biblioteca {
                         System.out.println("Categoría");
                         String categ = sc.nextLine().toLowerCase();
 
-                        Libro libroP = null;
-                        boolean seguir = true;
-
-                        for (int i = 0; i < listaLibros.length && seguir; i++) {
-
-                            if (listaLibros[i].getTitulo().equals(titulo) && listaLibros[i].getAutor().equals(autor)
-                                    && listaLibros[i].getCategoria().equals(categ)) {
-
-                                libroP = listaLibros[i];
-                                seguir = false;
-                            }
-
-                        }
-
-                        gestorPrestamo1.prestarL(libroP);
+                        gestorPrestamo1.prestarL(listaLibros, titulo, autor, categ, usuario, contadorLibro);
                         System.out.println(" ");
 
                         break;
@@ -309,25 +296,7 @@ public class Biblioteca {
                         System.out.println("Categoría: ");
                         String catd = sc.nextLine();
 
-                        Libro libroD = null;
-
-                        Libro[] listaLibrosPrestados = gestorPrestamo1.getListaLibrosPrestados();
-
-                        boolean seguirD = true;
-
-                        for (int i = 0; i < listaLibrosPrestados.length && seguirD; i++) {
-
-                            if (listaLibrosPrestados[i].getTitulo().equals(titulod)
-                                    && listaLibrosPrestados[i].getAutor().equals(autord)
-                                    && listaLibrosPrestados[i].getCategoria().equals(catd)) {
-
-                                libroP = listaLibrosPrestados[i];
-                                seguirD = false;
-                            }
-
-                        }
-
-                        gestorPrestamo1.devolverL(libroD);
+                        gestorPrestamo1.devolverL(titulod, autord, catd, usuario);
                         System.out.println(" ");
 
                         break;
@@ -430,6 +399,7 @@ public class Biblioteca {
                     case 3:
 
                         Libro[] listaLibros = gestorLibro1.getListaLibros();
+                        int contadorLibro = gestorLibro1.getContadorLibros();
 
                         System.out.println("Introduzca el libro que quieres prestar");
                         System.out.println("Título");
@@ -439,21 +409,8 @@ public class Biblioteca {
                         System.out.println("Categoría");
                         String categ = sc.nextLine().toLowerCase();
 
-                        Libro libroP = null;
-
-                        boolean seguir = true;
-
-                        for (int i = 0; i < listaLibros.length && seguir; i++) {
-
-                            if (listaLibros[i].getTitulo().equals(titulo) && listaLibros[i].getAutor().equals(autor)
-                                    && listaLibros[i].getCategoria().equals(categ)) {
-
-                                libroP = listaLibros[i];
-                                seguir = false;
-                            }
-
-                        }
-                        gestorPrestamo1.prestarL(libroP);
+                        gestorPrestamo1.prestarL(listaLibros, titulo, autor, categ, usuario, contadorLibro);
+                        System.out.println(" ");
                         System.out.println(" ");
 
                         break;
@@ -470,36 +427,7 @@ public class Biblioteca {
                         System.out.println("Categoría: ");
                         String catd = sc.nextLine();
 
-                        Libro libroD = null;
-
-                        Libro[] listaLibrosPrestados = gestorPrestamo1.getListaLibrosPrestados();
-
-                        boolean seguirD = true;
-
-                        for (int i = 0; i < listaLibrosPrestados.length && seguirD; i++) {
-
-                            if (listaLibrosPrestados[i].getTitulo().equals(titulod)
-                                    && listaLibrosPrestados[i].getAutor().equals(autord)
-                                    && listaLibrosPrestados[i].getCategoria().equals(catd)) {
-
-                                libroP = listaLibrosPrestados[i];
-                                seguirD = false;
-                            }
-
-                        }
-
-                        for (Libro l : listaLibrosPrestados) {
-
-                            if (l.getTitulo().equals(titulod) && l.getAutor().equals(autord)
-                                    && l.getCategoria().equals(catd)) {
-
-                                libroD = l;
-
-                            }
-
-                        }
-
-                        gestorPrestamo1.devolverL(libroD);
+                        gestorPrestamo1.devolverL(titulod, autord, catd, usuario);
                         System.out.println(" ");
 
                         break;
