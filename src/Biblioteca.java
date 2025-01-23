@@ -122,10 +122,13 @@ public class Biblioteca {
                         String cat = sc.nextLine().toLowerCase();
 
                         gestorLibro1.agregarLibro(t, a, cat);
+                        System.out.println(" ");
 
                         break;
                     case 2:
                         // elimina libros
+                        System.out.println(" ");
+
                         break;
 
                     case 3:
@@ -153,12 +156,14 @@ public class Biblioteca {
                         }
 
                         gestorUsuario1.registroUser(nom, a1, a2, ac, t2);
+                        System.out.println(" ");
 
                         break;
 
                     case 4:
 
                         gestorUsuario1.consultaDatosUsuario();
+                        System.out.println(" ");
 
                         break;
 
@@ -198,12 +203,14 @@ public class Biblioteca {
                                 System.out.println("No hay más opciones");
                                 break;
                         }
+                        System.out.println(" ");
 
                         break;
 
                     case 6:
 
                         gestorLibro1.librosTotales();
+                        System.out.println(" ");
 
                         break;
 
@@ -232,6 +239,7 @@ public class Biblioteca {
                         }
 
                         gestorPrestamo1.prestarL(listaLibros, libroP);
+                        System.out.println(" ");
 
                         break;
 
@@ -263,12 +271,14 @@ public class Biblioteca {
                         }
 
                         gestorPrestamo1.devolverL(libroD);
+                        System.out.println(" ");
 
                         break;
 
                     case 9:
 
                         gestorPrestamo1.librosPrestados();
+                        System.out.println(" ");
 
                         break;
                     default:
@@ -323,6 +333,7 @@ public class Biblioteca {
                                 String titutloB = sc.nextLine().toLowerCase();
 
                                 gestorLibro1.buscarTituloLibro(titutloB);
+                                System.out.println(" ");
 
                                 break;
 
@@ -332,6 +343,7 @@ public class Biblioteca {
                                 String autoB = sc.nextLine().toLowerCase();
 
                                 gestorLibro1.buscarPorAutor(autoB);
+                                System.out.println(" ");
 
                                 break;
 
@@ -340,6 +352,8 @@ public class Biblioteca {
                                 String catB = sc.nextLine().toLowerCase();
 
                                 gestorLibro1.buscarPorCategoria(catB);
+                                System.out.println(" ");
+
                                 break;
 
                             default:
@@ -353,6 +367,7 @@ public class Biblioteca {
                     case 2:
 
                         gestorLibro1.librosTotales();
+                        System.out.println(" ");
 
                         break;
 
@@ -381,6 +396,7 @@ public class Biblioteca {
                         }
 
                         gestorPrestamo1.prestarL(listaLibros, libroP);
+                        System.out.println(" ");
 
                         break;
 
@@ -412,6 +428,7 @@ public class Biblioteca {
                         }
 
                         gestorPrestamo1.devolverL(libroD);
+                        System.out.println(" ");
 
                         break;
 
