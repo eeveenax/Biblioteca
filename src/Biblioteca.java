@@ -23,6 +23,24 @@ public class Biblioteca {
         gestorUsuario1.registroUser("maria", "ceballos", "mesías", "123maria", Tipo.administrador);
         gestorUsuario1.registroUser("laura", "lopez", "pino", "123laura123", Tipo.usuario);
         gestorUsuario1.registroUser("ana", "carmona", "carmona", "123ana", Tipo.usuario);
+        gestorUsuario1.registroUser("eve", "lopez", "gil", "eve345", Tipo.usuario);
+        gestorUsuario1.registroUser("eva", "lopez", "paredes", "eva345", Tipo.usuario);
+        gestorUsuario1.registroUser("carlos", "lopez", "ceballos", "123carlos", Tipo.usuario);
+        gestorUsuario1.registroUser("marco", "lopez", "mesias", "123marco", Tipo.usuario);
+        gestorUsuario1.registroUser("marcos", "lopez", "reseco", "marcos456", Tipo.usuario);
+        gestorUsuario1.registroUser("juan", "lopez", "tejeda", "juan456", Tipo.usuario);
+        gestorUsuario1.registroUser("jesús", "lopez", "martinez", "123laura123", Tipo.usuario);
+        gestorUsuario1.registroUser("ana", "lopez", "espinosa", "jesús567", Tipo.usuario);
+        gestorUsuario1.registroUser("marta", "lopez", "acedo", "marta123", Tipo.usuario);
+        gestorUsuario1.registroUser("pablo", "lopez", "gonzalez", "pablo123", Tipo.usuario);
+        gestorUsuario1.registroUser("jose", "lopez", "cerrato", "jose123", Tipo.usuario);
+        gestorUsuario1.registroUser("victoria", "lopez", "guisado", "victoria123", Tipo.usuario);
+        gestorUsuario1.registroUser("lucia", "lopez", "guerrero", "lucia890", Tipo.usuario);
+        gestorUsuario1.registroUser("maría", "guerreri", "guisado", "123maría", Tipo.usuario);
+        gestorUsuario1.registroUser("ángel", "guisado", "lopez", "123angel", Tipo.usuario);
+        gestorUsuario1.registroUser("luis", "reseco", "paredes", "luis890", Tipo.usuario);
+        gestorUsuario1.registroUser("ana", "lopez", "pino", "ana890", Tipo.usuario);
+        gestorUsuario1.registroUser("angustias", "lopez", "pineda", "angustias123", Tipo.usuario);
 
         // Libros
 
@@ -30,7 +48,17 @@ public class Biblioteca {
         gestorLibro1.agregarLibro("cien años de soledad", "garcia marquez", "historia");
         gestorLibro1.agregarLibro("harry potter", "jk rowling", "fantasia");
         gestorLibro1.agregarLibro("harry potter 2", "jk rowling", "fantasia");
+        gestorLibro1.agregarLibro("harry potter 3", "jk rowling", "fantasia");
+        gestorLibro1.agregarLibro("harry potter 4", "jk rowling", "fantasia");
+        gestorLibro1.agregarLibro("harry potter 5", "jk rowling", "fantasia");
         gestorLibro1.agregarLibro("el resplandor", "stephen king", "miedo");
+        gestorLibro1.agregarLibro("el diario de ana frank", "ana frank", "biografia");
+        gestorLibro1.agregarLibro("el misterio de la mansión", "agatha christie", "misterio");
+        gestorLibro1.agregarLibro("el código da vinci", "dan brown", "misterio");
+        gestorLibro1.agregarLibro("steve jobs", "walter isaacson", "biografía");
+        gestorLibro1.agregarLibro("orgullo y prejuicio", "jane austen", "romance");
+        gestorLibro1.agregarLibro("bajo la misma estrella", "john green", "romance");
+        gestorLibro1.agregarLibro("posdata: te amo", "cecelia ahern", "romance");
 
         // Biblioteca
         System.out.println(
@@ -76,24 +104,23 @@ public class Biblioteca {
         if (loggedAdmin && loggeado && encontrado) {
 
             boolean seguirA = true;
+            System.out.println("Bienvenid@ " + nombre + " Sus préstamos actuales ascienden a: "
+                    + usuario.getContLibrosPrestamoActivos());
 
-            while (seguirA) {
-                System.out.println("Bienvenid@ " + nombre + " Sus préstamos actuales ascienden a: "
-                        + usuario.getContLibrosPrestamoActivos());
+            if (usuario.getContLibrosPrestamoActivos() > 0) {
 
-                if (usuario.getContLibrosPrestamoActivos() > 0) {
+                System.out.println("¿Quieres verlos? si o no");
+                String respuesta = sc.nextLine().toLowerCase();
+                if (respuesta.equals("no")) {
+                    System.out.println("De acuerdo, ¯/_(0-0)_/¯");
+                } else {
 
-                    System.out.println("¿Quieres verlos? si o no");
-                    String respuesta = sc.nextLine().toLowerCase();
-                    if (respuesta.equals("no")) {
-                        System.out.println("De acuerdo, ¯/_(0-0)_/¯");
-                    } else {
-
-                        usuario.getlistaLibrosUsuariosPrestado();
-
-                    }
+                    usuario.getlistaLibrosUsuariosPrestado();
 
                 }
+
+            }
+            while (seguirA) {
 
                 System.out.println(" ");
                 System.out.println("Elija una opción: ");
@@ -252,18 +279,20 @@ public class Biblioteca {
                         String categ = sc.nextLine().toLowerCase();
 
                         Libro libroP = null;
+                        boolean seguir = true;
 
-                        for (Libro l : listaLibros) {
+                        for (int i = 0; i < listaLibros.length && seguir; i++) {
 
-                            if (l.getTitulo().equals(titulo) && l.getAutor().equals(autor)
-                                    && l.getCategoria().equals(categ)) {
+                            if (listaLibros[i].getTitulo().equals(titulo) && listaLibros[i].getAutor().equals(autor)
+                                    && listaLibros[i].getCategoria().equals(categ)) {
 
-                                libroP = l;
+                                libroP = listaLibros[i];
+                                seguir = false;
                             }
 
                         }
 
-                        gestorPrestamo1.prestarL(listaLibros, libroP);
+                        gestorPrestamo1.prestarL(libroP);
                         System.out.println(" ");
 
                         break;
@@ -284,13 +313,16 @@ public class Biblioteca {
 
                         Libro[] listaLibrosPrestados = gestorPrestamo1.getListaLibrosPrestados();
 
-                        for (Libro l : listaLibrosPrestados) {
+                        boolean seguirD = true;
 
-                            if (l.getTitulo().equals(titulod) && l.getAutor().equals(autord)
-                                    && l.getCategoria().equals(catd)) {
+                        for (int i = 0; i < listaLibrosPrestados.length && seguirD; i++) {
 
-                                libroD = l;
+                            if (listaLibrosPrestados[i].getTitulo().equals(titulod)
+                                    && listaLibrosPrestados[i].getAutor().equals(autord)
+                                    && listaLibrosPrestados[i].getCategoria().equals(catd)) {
 
+                                libroP = listaLibrosPrestados[i];
+                                seguirD = false;
                             }
 
                         }
@@ -316,24 +348,23 @@ public class Biblioteca {
         } else if (loggeado && encontrado) {
 
             boolean seguirU = true;
-            while (seguirU) {
+            System.out.println("Bienvenid@ " + nombre + " Sus préstamos actuales ascienden a: "
+                    + usuario.getContLibrosPrestamoActivos());
 
-                System.out.println("Bienvenid@ " + nombre + " Sus préstamos actuales ascienden a: "
-                        + usuario.getContLibrosPrestamoActivos());
+            if (usuario.getContLibrosPrestamoActivos() > 0) {
 
-                if (usuario.getContLibrosPrestamoActivos() > 0) {
+                System.out.println("¿Quieres verlos? si o no");
+                String respuesta = sc.nextLine().toLowerCase();
+                if (respuesta.equals("no")) {
+                    System.out.println("De acuerdo, ¯/_(0-0)_/¯");
+                } else {
 
-                    System.out.println("¿Quieres verlos? si o no");
-                    String respuesta = sc.nextLine().toLowerCase();
-                    if (respuesta.equals("no")) {
-                        System.out.println("De acuerdo, ¯/_(0-0)_/¯");
-                    } else {
-
-                        usuario.getlistaLibrosUsuariosPrestado();
-
-                    }
+                    usuario.getlistaLibrosUsuariosPrestado();
 
                 }
+
+            }
+            while (seguirU) {
 
                 System.out.println(" ");
                 System.out.println("Elija una opción: ");
@@ -410,17 +441,19 @@ public class Biblioteca {
 
                         Libro libroP = null;
 
-                        for (Libro l : listaLibros) {
+                        boolean seguir = true;
 
-                            if (l.getTitulo().equals(titulo) && l.getAutor().equals(autor)
-                                    && l.getCategoria().equals(categ)) {
+                        for (int i = 0; i < listaLibros.length && seguir; i++) {
 
-                                libroP = l;
+                            if (listaLibros[i].getTitulo().equals(titulo) && listaLibros[i].getAutor().equals(autor)
+                                    && listaLibros[i].getCategoria().equals(categ)) {
+
+                                libroP = listaLibros[i];
+                                seguir = false;
                             }
 
                         }
-
-                        gestorPrestamo1.prestarL(listaLibros, libroP);
+                        gestorPrestamo1.prestarL(libroP);
                         System.out.println(" ");
 
                         break;
@@ -440,6 +473,20 @@ public class Biblioteca {
                         Libro libroD = null;
 
                         Libro[] listaLibrosPrestados = gestorPrestamo1.getListaLibrosPrestados();
+
+                        boolean seguirD = true;
+
+                        for (int i = 0; i < listaLibrosPrestados.length && seguirD; i++) {
+
+                            if (listaLibrosPrestados[i].getTitulo().equals(titulod)
+                                    && listaLibrosPrestados[i].getAutor().equals(autord)
+                                    && listaLibrosPrestados[i].getCategoria().equals(catd)) {
+
+                                libroP = listaLibrosPrestados[i];
+                                seguirD = false;
+                            }
+
+                        }
 
                         for (Libro l : listaLibrosPrestados) {
 

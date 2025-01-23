@@ -20,38 +20,20 @@ public class GestorPrestamos {
 
     }
 
-    public void prestarL(Libro[] listaLibros, Libro libro) {
+    public void prestarL(Libro libro) {
 
-        boolean seguir = true;
+        if (libro.getDisponible() == true) {
 
-        if (listaLibros[0] != null) {
+            System.out.println(
+                    "El libro " + libro.getTitulo() + " está disponible para su préstamos");
 
-            for (int i = 0; i < listaLibros.length && seguir; i++) {
+            libro.setDisponible(false);
 
-                if (listaLibros[i] == libro) {
+            listaLibrosPrestamos[contadorLibrosPrestados] = libro;
+            contadorLibrosPrestados++;
+            prestamosTotales++;
+            prestamosActivos++;
 
-                    if (listaLibros[i].getDisponible() == true) {
-
-                        System.out.println(
-                                "El libro " + listaLibros[i].getTitulo() + " está disponible para su préstamos");
-
-                        listaLibros[i].setDisponible(false);
-
-                        listaLibrosPrestamos[contadorLibrosPrestados] = libro;
-                        contadorLibrosPrestados++;
-                        prestamosTotales++;
-                        prestamosActivos++;
-                        seguir = false;
-
-                    }
-
-                }
-
-            }
-
-        } else {
-
-            System.out.println("No hay libros.");
         }
 
     }
