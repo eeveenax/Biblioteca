@@ -126,7 +126,32 @@ public class Biblioteca {
 
                         break;
                     case 2:
-                        // elimina libros
+
+                        System.out.println("Escribe los datos del libro a eliminar: ");
+
+                        System.out.println("Título: ");
+                        String tEliminar = sc.nextLine().toLowerCase();
+                        System.out.println("Autor: ");
+                        String aEliminar = sc.nextLine().toLowerCase();
+                        System.out.println("Categoría: ");
+                        String cateeliminar = sc.nextLine().toLowerCase();
+
+                        Libro libro = null;
+                        Libro[] listaLibro = gestorLibro1.getListaLibros();
+
+                        for (Libro libroE : listaLibro) {
+
+                            if (libroE.getTitulo().equals(tEliminar) && libroE.getAutor().equals(aEliminar)
+                                    && libroE.getCategoria().equals(cateeliminar)) {
+
+                                libro = libroE;
+
+                            }
+
+                        }
+
+                        gestorLibro1.eliminaLibro(libro);
+
                         System.out.println(" ");
 
                         break;

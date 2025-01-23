@@ -99,6 +99,40 @@ public class GestorLibros {
 
     // Elimina los libros
 
+    public Libro[] eliminaLibro(Libro libro) {
+
+        boolean eliminado = false;
+        int pos = 0;
+
+        for (int i = 0; i < contadorLibros; i++) {
+
+            if (libros[i] == libro) {
+
+                libros[i] = null;
+                eliminado = true;
+                pos = i;
+
+            }
+
+        }
+
+        if (eliminado) {
+
+            for (int i = pos; i < contadorLibros; i++) {
+
+                libros[i] = libros[i + 1];
+
+            }
+
+            System.out.println("Libro eliminado con éxito");
+            contadorLibros--;
+
+        }
+
+        return libros;
+
+    }
+
     public void librosTotales() {
 
         for (int i = 0; i < contadorLibros; i++) {
