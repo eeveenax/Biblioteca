@@ -3,53 +3,51 @@ import java.util.Arrays;
 public class GestorLibros {
 
     private Libro[] libros;
-    private Libro[] librosporPrestamo;
 
-    private static int lleno;
-    private static final int TAM = 100;
+    private static int contadorLibros;
+    private static final int tam = 100;
 
     public GestorLibros() {
-        libros = new Libro[TAM];
-        lleno = 0;
+        libros = new Libro[tam];
+        contadorLibros = 0;
     }
 
-    public void agregarLibro(String t, String a, String c) {
+    public void agregarLibro(String titulo, String autor, String categoria) {
 
-        if (this.libros[0] == null) {
+        if (contadorLibros == 0) {
 
-            this.libros[0] = new Libro(t, a, c, true);
-            lleno++;
+            this.libros[0] = new Libro(titulo, autor, categoria, true);
+            contadorLibros++;
 
         } else {
 
             boolean existe = false;
 
-            for (int i = 0; i < lleno; i++) {
+            if (contadorLibros <= tam) {
 
-                if (this.libros[i].getTitulo().equals(t) && this.libros[i].getAutor().equals(a)
-                        && this.libros[i].getCategoria().equals(c)) {
+                for (int i = 0; i < contadorLibros; i++) {
 
-                    existe = true;
+                    if (this.libros[i].getTitulo().equals(titulo) && this.libros[i].getAutor().equals(autor)
+                            && this.libros[i].getCategoria().equals(categoria)) {
+
+                        existe = true;
+                    }
+                }
+
+                if (!existe) {
+
+                    this.libros[contadorLibros] = new Libro(titulo, autor, categoria, true);
+                    contadorLibros++;
+                    System.out.println("Libro agregado exitosamente");
+
+                } else {
+
+                    System.out.println("Ya existe");
                 }
 
             }
 
-            if (!existe) {
-
-                this.libros[lleno] = new Libro(t, a, c, true);
-                lleno++;
-                System.out.println("Libro agregado exitosamente");
-
-            } else {
-
-                System.out.println("Ya existe");
-            }
         }
-
-    }
-
-    public static void setLleno() {
-        lleno++;
 
     }
 
@@ -59,62 +57,54 @@ public class GestorLibros {
 
     }
 
-    public Libro[] buscartituloLibro(String titulo) {
-        Libro[] titulos = new Libro[TAM];
-        int titulolleno = 0;
+    public Libro[] buscarTituloLibro(String titulo) {
+        Libro[] titulos = new Libro[tam];
+        int contadorTitulo = 0;
         for (int i = 0; i < libros.length; i++) {
 
             if (libros[i].getTitulo().equals(titulo)) {
 
-                titulos[titulolleno] = libros[i];
-                titulolleno++;
+                titulos[contadorTitulo] = libros[i];
+                contadorTitulo++;
 
             }
         }
 
-        return Arrays.copyOf(titulos, titulolleno);
+        return Arrays.copyOf(titulos, contadorTitulo);
     }
 
     public Libro[] buscarPorAutor(String autor) {
-        Libro[] resultado = new Libro[TAM];
-        int autorLleno = 0;
+        Libro[] resultado = new Libro[tam];
+        int contadorAutor = 0;
         for (int i = 0; i < libros.length; i++) {
             if (libros[i].getAutor().equals(autor)) {
-                resultado[autorLleno] = libros[i];
-                autorLleno++;
+                resultado[contadorAutor] = libros[i];
+                contadorAutor++;
             }
         }
-        return Arrays.copyOf(resultado, autorLleno);
+        return Arrays.copyOf(resultado, contadorAutor);
     }
 
     public Libro[] buscarPorCategoria(String categorialibro) {
-        Libro[] resultado = new Libro[TAM];
-        int categoriaLleno = 0;
+        Libro[] resultado = new Libro[tam];
+        int contadorCategoria = 0;
         for (int i = 0; i < libros.length; i++) {
             if (libros[i].getCategoria().equals(categorialibro)) {
-                resultado[categoriaLleno] = libros[i];
-                categoriaLleno++;
+                resultado[contadorCategoria] = libros[i];
+                contadorCategoria++;
             }
         }
-        return Arrays.copyOf(resultado, categoriaLleno);
+        return Arrays.copyOf(resultado, contadorCategoria);
     }
 
     // Elimina los libros
 
     public void librosTotales() {
 
-        boolean seguir = true;
+        for (int i = 0; i < contadorLibros; i++) {
 
-        for (int i = 0; i < libros.length && seguir; i++) {
-
-            if (libros[i] != null) {
-
-                String info = libros[i].toString();
-                System.out.println(info);
-
-            } else {
-                seguir = false;
-            }
+            String info = libros[i].toString();
+            System.out.println(info);
 
         }
 
@@ -122,23 +112,21 @@ public class GestorLibros {
 
     public Libro[] librosMasPrestados() {
 
-        librosporPrestamo = libros.clone();
-
         boolean seguirC = true;
 
         while (seguirC) {
 
             int cambios = 0;
 
-            for (int i = 0; i < librosporPrestamo.length - 1; i++) {
+            for (int i = 0; i < contadorLibros - 1; i++) {
 
-                Libro aux = new Libro();
+                Libro aux = null;
 
-                if (librosporPrestamo[i].getContadorLP() < librosporPrestamo[i].getContadorLP()) {
+                if (this.libros[i].getContadorLP() < libros[i].getContadorLP()) {
 
-                    aux = librosporPrestamo[i];
-                    librosporPrestamo[i] = librosporPrestamo[i + 1];
-                    librosporPrestamo[i + 1] = aux;
+                    aux = this.libros[i];
+                    this.libros[i] = this.libros[i + 1];
+                    this.libros[i + 1] = aux;
                     cambios++;
 
                 }
@@ -153,7 +141,9 @@ public class GestorLibros {
 
         }
 
-        return librosporPrestamo;
+        Libro[] listaMasPrestados = Arrays.copyOf(libros, 10);
+
+        return listaMasPrestados;
 
     }
 

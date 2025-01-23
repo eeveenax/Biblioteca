@@ -1,68 +1,86 @@
 public class GestorPrestamos {
 
     private Libro[] listaLibrosPrestamos;
-    private int llenoP;
+    private int contadorLibrosPrestados;
     private int tam = 100;
     private int prestamosTotales = 0;
+    private int prestamosActivos = 0;
 
     public GestorPrestamos() {
 
         this.listaLibrosPrestamos = new Libro[tam];
 
-        llenoP = 0;
+        contadorLibrosPrestados = 0;
 
     }
 
-    // recibe la lista de libros completos
+    public Libro[] getListaLibrosPrestados() {
 
-    public void prestarL(Libro[] listaLibros, String titulo, String autor, String categoria) {
+        return this.listaLibrosPrestamos;
+
+    }
+
+    public void prestarL(Libro[] listaLibros, Libro libro) {
 
         boolean seguir = true;
 
-        for (int i = 0; i < listaLibros.length && seguir; i++) {
+        if (listaLibros[0] != null) {
 
-            if (titulo.equals(listaLibros[i].getTitulo()) && autor.equals(listaLibros[i].getAutor())
-                    && categoria.equals(listaLibros[i].getCategoria())) {
+            for (int i = 0; i < listaLibros.length && seguir; i++) {
 
-                if (listaLibros[i].getDisponible() == true) {
+                if (listaLibros[i] == libro) {
 
-                    System.out.println("El libro " + listaLibros[i].getTitulo() + " está disponible para su préstamos");
-                    listaLibros[i].setDisponible(false);
+                    if (listaLibros[i].getDisponible() == true) {
 
-                    listaLibrosPrestamos[llenoP] = new Libro(titulo, autor, categoria, false);
-                    llenoP++;
-                    prestamosTotales++;
-                    seguir = false;
+                        System.out.println(
+                                "El libro " + listaLibros[i].getTitulo() + " está disponible para su préstamos");
+
+                        listaLibros[i].setDisponible(false);
+
+                        listaLibrosPrestamos[contadorLibrosPrestados] = libro;
+                        contadorLibrosPrestados++;
+                        prestamosTotales++;
+                        prestamosActivos++;
+                        seguir = false;
+
+                    }
 
                 }
 
             }
 
+        } else {
+
+            System.out.println("No hay libros.");
         }
 
     }
 
     // recibe la lista de libros prestados
 
-    public void devolverL(String titulo, String autor, String categoria) {
+    public void devolverL(Libro libro) {
 
-        for (int i = 0; i < llenoP; i++) {
+        if (contadorLibrosPrestados > 0) {
 
-            if (titulo.equals(listaLibrosPrestamos[i].getTitulo()) && autor.equals(listaLibrosPrestamos[i].getAutor())
-                    && categoria.equals(listaLibrosPrestamos[i].getCategoria())) {
+        }
+
+        for (int i = 0; i < contadorLibrosPrestados; i++) {
+
+            if (listaLibrosPrestamos[i] == libro) {
 
                 if (listaLibrosPrestamos[i].getDisponible() == false) {
 
                     System.out.println("El libro " + listaLibrosPrestamos[i].getTitulo() + " ha sido devuelto");
                     listaLibrosPrestamos[i].setDisponible(true);
-                    prestamosTotales--;
+                    prestamosActivos--;
 
-                    for (int j = 0; j < llenoP - 1; j++) {
+                    for (int j = i; j < contadorLibrosPrestados - 1; j++) {
 
                         listaLibrosPrestamos[i] = listaLibrosPrestamos[i + 1];
-                        llenoP--;
 
                     }
+
+                    contadorLibrosPrestados--;
 
                 }
 
@@ -74,7 +92,7 @@ public class GestorPrestamos {
 
     public void librosPrestados() {
 
-        for (int i = 0; i < llenoP; i++) {
+        for (int i = 0; i < contadorLibrosPrestados; i++) {
 
             System.out.println(listaLibrosPrestamos[i].toString());
 
@@ -82,9 +100,14 @@ public class GestorPrestamos {
 
     }
 
-    public int getPrestamostotales() {
+    public int getPrestamosTotales() {
 
         return this.prestamosTotales;
+    }
+
+    public int getPrestamosActivos() {
+
+        return this.prestamosActivos;
     }
 
 }
