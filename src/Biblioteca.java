@@ -8,9 +8,6 @@ import java.util.Scanner;
 public class Biblioteca {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        boolean loggedAdmin = false;
-        boolean loggeado = false;
-        boolean encontrado = false;
 
         // Elementos
         GestorUsuario gestorUsuario1 = new GestorUsuario();
@@ -66,6 +63,9 @@ public class Biblioteca {
         boolean seguirLog = true;
         while (seguirLog) {
 
+            boolean loggedAdmin = false;
+            boolean loggeado = false;
+            boolean encontrado = false;
             System.out.println("Bienvenid@ a la Biblioteca: ");
             System.out.println("1.Iniciar Sesión");
             System.out.println("2.Salir de la Biblioteca");

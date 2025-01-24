@@ -36,6 +36,8 @@ public class GestorPrestamos {
 
                     listaLibro[i].setDisponible(false);
 
+                    usuario.aumentaLibrosUsuarioPrestados(listaLibrosPrestamos[i]);
+
                     this.listaLibrosPrestamos[contadorLibrosPrestados] = listaLibro[i];
                     prestamosTotales++;
                     contadorLibrosPrestados++;
