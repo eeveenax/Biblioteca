@@ -130,7 +130,7 @@ public class Biblioteca {
                                 System.out.println("De acuerdo, ¯/_(0-0)_/¯");
                             } else {
 
-                                usuario.getlistaLibrosUsuariosPrestado();
+                                usuario.verListaLibrosPrestados();
 
                             }
 
@@ -147,7 +147,7 @@ public class Biblioteca {
                             System.out.println("6.Mostrar todos los libros disponibles");
                             System.out.println("7.Realizar Préstamos");
                             System.out.println("8.Devolver Préstamos");
-                            System.out.println("9.Libros totales de la biblioteca");
+                            System.out.println("9.Libros prestados totales de la biblioteca");
                             System.out.println("10.Consulta tu lista de Libros en préstamo");
                             System.out.println("11.Consular Préstamos Totales");
                             System.out.println("12.Consular Préstamos Activos");
@@ -334,13 +334,7 @@ public class Biblioteca {
                                     if (usuario.getContLibrosPrestamoActivos() > 0) {
                                         System.out.println("Tu lista de libros Prestados son: ");
 
-                                        Libro[] lista = usuario.getlistaLibrosUsuariosPrestado();
-
-                                        for (Libro l : lista) {
-
-                                            System.out.println(l);
-
-                                        }
+                                        usuario.verListaLibrosPrestados();
                                     }
 
                                     break;
@@ -421,7 +415,7 @@ public class Biblioteca {
                                 System.out.println("De acuerdo, ¯/_(0-0)_/¯");
                             } else {
 
-                                usuario.getlistaLibrosUsuariosPrestado();
+                                usuario.verListaLibrosPrestados();
 
                             }
 
@@ -534,13 +528,7 @@ public class Biblioteca {
                                     if (usuario.getContLibrosPrestamoActivos() > 0) {
                                         System.out.println("Tu lista de libros Prestados son: ");
 
-                                        Libro[] lista = usuario.getlistaLibrosUsuariosPrestado();
-
-                                        for (Libro l : lista) {
-
-                                            System.out.println(l);
-
-                                        }
+                                        usuario.verListaLibrosPrestados();
 
                                     } else {
 

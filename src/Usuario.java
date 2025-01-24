@@ -39,9 +39,9 @@ public class Usuario {
 
             System.out.println("Tus libros prestados son: ");
 
-            for (Libro libro : listaLibrosUsuariosTienePrestado) {
+            for (int i = 0; i < contLibrosPrestamoActivos; i++) {
 
-                System.out.println(libro.toString());
+                System.out.println(listaLibrosUsuariosTienePrestado[i].toString());
             }
 
         }

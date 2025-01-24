@@ -41,9 +41,17 @@ public class GestorPrestamos {
                     this.listaLibrosPrestamos[contadorLibrosPrestados] = listaLibro[i];
                     prestamosTotales++;
                     contadorLibrosPrestados++;
+                    seguir = false;
 
+                } else {
+
+                    System.out
+                            .println(" El libro " + listaLibro[i].getTitulo() + " no está disponible para su préstamo");
                 }
 
+            } else {
+
+                System.out.println("El libro no existe");
             }
 
         }
