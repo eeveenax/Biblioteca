@@ -22,26 +22,26 @@ public class Biblioteca {
         gestorUsuario1.registroUser("juajesu", "espinosa", "martinez", "123juajesu", Tipo.administrador);
         gestorUsuario1.registroUser("maria", "ceballos", "mesías", "123maria", Tipo.administrador);
         gestorUsuario1.registroUser("maria", "ceballos", "mesías", "123maria", Tipo.administrador);
-        gestorUsuario1.registroUser("laura", "lopez", "pino", "123laura123", Tipo.usuario);
-        gestorUsuario1.registroUser("ana", "carmona", "carmona", "123ana", Tipo.usuario);
+        gestorUsuario1.registroUser("uxue", "lopez", "pino", "123uxue123", Tipo.usuario);
+        gestorUsuario1.registroUser("pablo", "mala", "leche", "123pablo", Tipo.usuario);
         gestorUsuario1.registroUser("eve", "lopez", "gil", "eve345", Tipo.usuario);
-        gestorUsuario1.registroUser("eva", "lopez", "paredes", "eva345", Tipo.usuario);
-        gestorUsuario1.registroUser("carlos", "lopez", "ceballos", "123carlos", Tipo.usuario);
+        gestorUsuario1.registroUser("marina", "lopez", "paredes", "marina345", Tipo.usuario);
+        gestorUsuario1.registroUser("leon", "lopez", "ceballos", "123leon", Tipo.usuario);
         gestorUsuario1.registroUser("marco", "lopez", "mesias", "123marco", Tipo.usuario);
         gestorUsuario1.registroUser("aitor", "lopez", "mora", "aitor123", Tipo.usuario);
         gestorUsuario1.registroUser("juan", "lopez", "tejeda", "juan456", Tipo.usuario);
-        gestorUsuario1.registroUser("jesús", "lopez", "martinez", "123laura123", Tipo.usuario);
-        gestorUsuario1.registroUser("ana", "lopez", "espinosa", "jesús567", Tipo.usuario);
-        gestorUsuario1.registroUser("marta", "lopez", "acedo", "marta123", Tipo.usuario);
+        gestorUsuario1.registroUser("jesús", "lopez", "martinez", "123jesus123", Tipo.usuario);
+        gestorUsuario1.registroUser("joghe", "alegre", "triste", "joghe123", Tipo.usuario);
+        gestorUsuario1.registroUser("gaia", "lopez", "ceballos", "gaia123", Tipo.usuario);
         gestorUsuario1.registroUser("pablo", "lopez", "gonzalez", "pablo123", Tipo.usuario);
         gestorUsuario1.registroUser("jose", "lopez", "cerrato", "jose123", Tipo.usuario);
         gestorUsuario1.registroUser("victoria", "lopez", "guisado", "victoria123", Tipo.usuario);
         gestorUsuario1.registroUser("lucia", "lopez", "guerrero", "lucia890", Tipo.usuario);
-        gestorUsuario1.registroUser("maría", "guerreri", "guisado", "123maría", Tipo.usuario);
+        gestorUsuario1.registroUser("andrea", "guerreri", "guisado", "123andrea", Tipo.usuario);
         gestorUsuario1.registroUser("ángel", "guisado", "lopez", "123angel", Tipo.usuario);
         gestorUsuario1.registroUser("luis", "reseco", "paredes", "luis890", Tipo.usuario);
         gestorUsuario1.registroUser("ana", "lopez", "pino", "ana890", Tipo.usuario);
-        gestorUsuario1.registroUser("angustias", "lopez", "pineda", "angustias123", Tipo.usuario);
+        gestorUsuario1.registroUser("azahara", "lopez", "pineda", "azahara123", Tipo.usuario);
 
         // Libros
 
@@ -307,7 +307,7 @@ public class Biblioteca {
 
                                 case 8:
 
-                                    System.out.println("Introduzca el libro a devolver");
+                                    System.out.println("Introduzca el libro que vayas a devolver");
                                     System.out.println("Título: ");
                                     String titulod = sc.nextLine();
 
@@ -385,7 +385,7 @@ public class Biblioteca {
 
                                     System.out.println(" ");
 
-                                    System.out.println("El top 10 de los usuarios con más préstamos totales: ");
+                                    System.out.println("El top 10 de los usuarios con más préstamos totales son: ");
 
                                     for (Usuario u : listaUsuariosMasPrest) {
 
@@ -586,7 +586,7 @@ public class Biblioteca {
 
                 case 2:
 
-                    System.out.println("Adiu");
+                    System.out.println("ADIÓS (-.-)");
 
                     seguirLog = false;
 
