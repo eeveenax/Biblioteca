@@ -33,7 +33,7 @@ public class Usuario {
 
         if (contLibrosPrestamoActivos == 0) {
 
-            System.out.println("No tienes libros");
+            System.out.println("No tienes libros (0.0)");
 
         } else {
 
