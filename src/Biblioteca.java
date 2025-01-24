@@ -69,7 +69,6 @@ public class Biblioteca {
             System.out.println("Bienvenid@ a la Biblioteca: ");
             System.out.println("1.Iniciar Sesión");
             System.out.println("2.Salir de la Biblioteca");
-            System.out.println("Seleccione una opción: ");
 
             int opcionB = Integer.parseInt(sc.nextLine());
 
