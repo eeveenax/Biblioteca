@@ -28,7 +28,7 @@ public class Biblioteca {
         gestorUsuario1.registroUser("eva", "lopez", "paredes", "eva345", Tipo.usuario);
         gestorUsuario1.registroUser("carlos", "lopez", "ceballos", "123carlos", Tipo.usuario);
         gestorUsuario1.registroUser("marco", "lopez", "mesias", "123marco", Tipo.usuario);
-        gestorUsuario1.registroUser("marcos", "lopez", "reseco", "marcos456", Tipo.usuario);
+        gestorUsuario1.registroUser("aitor", "lopez", "mora", "aitor123", Tipo.usuario);
         gestorUsuario1.registroUser("juan", "lopez", "tejeda", "juan456", Tipo.usuario);
         gestorUsuario1.registroUser("jesús", "lopez", "martinez", "123laura123", Tipo.usuario);
         gestorUsuario1.registroUser("ana", "lopez", "espinosa", "jesús567", Tipo.usuario);
