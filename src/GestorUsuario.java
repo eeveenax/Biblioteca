@@ -13,6 +13,22 @@ public class GestorUsuario {
 
     }
 
+    public Usuario[] getlistaUser() {
+
+        return this.listaUsuario;
+
+    }
+
+    public void setCuentaUsuario() {
+
+        contadorListaUsuario++;
+    }
+
+    public int getCuentaUsuario() {
+
+        return this.contadorListaUsuario;
+    }
+
     public void consultaDatosUsuario() {
 
         for (int i = 0; i < contadorListaUsuario; i++) {
@@ -61,21 +77,8 @@ public class GestorUsuario {
 
     }
 
-    public Usuario[] getlistaUser() {
-
-        return this.listaUsuario;
-
-    }
-
-    public void setCuentaUsuario() {
-
-        contadorListaUsuario++;
-    }
-
-    public int getCuentaUsuario() {
-
-        return this.contadorListaUsuario;
-    }
+    // Lista de los usuarios ordenador por el número de préstamos que tienen,
+    // mostrando luego solo los 10 primeros
 
     public Usuario[] usuariosPorPrestamos() {
 

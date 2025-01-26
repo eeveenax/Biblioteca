@@ -28,6 +28,18 @@ public class GestorLibros {
 
     }
 
+    // Método para ver la info de cada libro
+    public void librosTotales() {
+
+        for (int i = 0; i < contadorLibros; i++) {
+
+            String info = libros[i].toString();
+            System.out.println(info);
+
+        }
+
+    }
+
     public void agregarLibro(String titulo, String autor, String categoria) {
 
         if (contadorLibros == 0) {
@@ -140,17 +152,6 @@ public class GestorLibros {
         }
 
         return libros;
-
-    }
-
-    public void librosTotales() {
-
-        for (int i = 0; i < contadorLibros; i++) {
-
-            String info = libros[i].toString();
-            System.out.println(info);
-
-        }
 
     }
 

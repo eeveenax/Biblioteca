@@ -22,18 +22,6 @@ public class Libro {
         this.contadoLP = 0;
     }
 
-    public void aumentoContadorLP() {
-
-        this.contadoLP = contadoLP++;
-
-    }
-
-    public int getContadorLP() {
-
-        return contadoLP;
-
-    }
-
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -67,6 +55,20 @@ public class Libro {
     public boolean getDisponible() {
 
         return this.disponible;
+    }
+
+    public int getContadorLP() {
+
+        return contadoLP;
+
+    }
+
+    // Aumento del contador de libros prestados
+
+    public void aumentoContadorLP() {
+
+        this.contadoLP = contadoLP++;
+
     }
 
     @Override

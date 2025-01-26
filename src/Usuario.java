@@ -23,31 +23,6 @@ public class Usuario {
 
     }
 
-    public Libro[] getlistaLibrosUsuariosPrestado() {
-
-        return this.listaLibrosUsuariosTienePrestado;
-
-    }
-
-    public void verListaLibrosPrestados() {
-
-        if (contLibrosPrestamoActivos == 0) {
-
-            System.out.println("No tienes libros (0.0)");
-
-        } else {
-
-            System.out.println("Tus libros prestados son: ");
-
-            for (int i = 0; i < contLibrosPrestamoActivos; i++) {
-
-                System.out.println(listaLibrosUsuariosTienePrestado[i].toString());
-            }
-
-        }
-
-    }
-
     public Usuario() {
         this.nombre = " ";
         this.apellido = " ";
@@ -58,6 +33,8 @@ public class Usuario {
         this.listaLibrosUsuariosTienePrestado = new Libro[tam];
 
     }
+
+    // Getters y setter del usuario
 
     public String getNombre() {
         return this.nombre;
@@ -91,6 +68,14 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
+    public Tipo getTipo() {
+
+        return tipo;
+
+    }
+
+    // Contador de los préstamos que los usuarios tienen actualmente, en activo
+
     public void setContLibrosPrestamoActivos(int contLibrosPrestamoActivos) {
 
         this.contLibrosPrestamoActivos = contLibrosPrestamoActivos;
@@ -101,6 +86,8 @@ public class Usuario {
 
     }
 
+    // Contador de los libros totales que el usuario coge, el histórico
+
     public void setContPrestamosUsuario(int contadorLP) {
 
         this.contPrestamosUsuario = contadorLP;
@@ -110,6 +97,35 @@ public class Usuario {
         return this.contPrestamosUsuario;
 
     }
+
+    // getter de la sita de libro que el usuario tiene en préstamo
+
+    public Libro[] getlistaLibrosUsuariosPrestado() {
+
+        return this.listaLibrosUsuariosTienePrestado;
+
+    }
+
+    public void verListaLibrosPrestados() {
+
+        if (contLibrosPrestamoActivos == 0) {
+
+            System.out.println("No tienes libros (0.0)");
+
+        } else {
+
+            System.out.println("Tus libros prestados son: ");
+
+            for (int i = 0; i < contLibrosPrestamoActivos; i++) {
+
+                System.out.println(listaLibrosUsuariosTienePrestado[i].toString());
+            }
+
+        }
+
+    }
+
+    // Métodos para actualizar la lista de libros que el usuario tiene en préstamo
 
     public void aumentaLibrosUsuarioPrestados(Libro libro) {
 
@@ -156,12 +172,6 @@ public class Usuario {
             }
 
         }
-
-    }
-
-    public Tipo getTipo() {
-
-        return tipo;
 
     }
 

@@ -19,6 +19,28 @@ public class GestorPrestamos {
 
     }
 
+    public int getPrestamosTotales() {
+
+        return this.prestamosTotales;
+    }
+
+    public int getPrestamosActivos() {
+
+        return this.contadorLibrosPrestados;
+    }
+
+    // Ver la lista de todos los libros en préstamo que tiene la biblioteca
+
+    public void librosPrestados() {
+
+        for (int i = 0; i < contadorLibrosPrestados; i++) {
+
+            System.out.println(listaLibrosPrestamos[i].toString());
+
+        }
+
+    }
+
     public void prestarL(Libro[] listaLibro, String titulo, String autor, String categoria, Usuario usuario,
             int contadorLibro) {
 
@@ -92,26 +114,6 @@ public class GestorPrestamos {
 
         }
 
-    }
-
-    public void librosPrestados() {
-
-        for (int i = 0; i < contadorLibrosPrestados; i++) {
-
-            System.out.println(listaLibrosPrestamos[i].toString());
-
-        }
-
-    }
-
-    public int getPrestamosTotales() {
-
-        return this.prestamosTotales;
-    }
-
-    public int getPrestamosActivos() {
-
-        return this.contadorLibrosPrestados;
     }
 
 }
